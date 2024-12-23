@@ -1,24 +1,24 @@
-import React from 'react'
+import React from "react";
 
 const Navbar = () => {
   return (
-    <nav>
-      <h1>
-        <h1> Todo App</h1>
-      </h1>
-      <ul>
-        <li>
-          <a href='index.html'> Home</a>
-        </li>
-        <li>
-          <a href='register.html'> Registration Page</a>
-        </li>
-        <li>
-          <a href='login.html'> Login Page</a>
-        </li>
-      </ul>
+    <nav className="navbar navbar-expand-lg  navbar-light bg-light">
+      <h1 className="navbar-brand">Todo App</h1>
+      <div className="collapse navbar-collapse">
+        <ul className="navbar-nav ms-auto">
+          <li className="nav-item">
+            <a  className="nav-link" href="home.html"> Home</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="register.html"> Registration</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="login.html"> Login</a>
+          </li>
+        </ul>
+      </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
