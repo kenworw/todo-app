@@ -1,0 +1,31 @@
+{
+  "name": "webstack---portfolio-project",
+  "version": "1.0.0",
+  "description": "full stack todo app",
+  "homepage": "https://github.com/kenworw/todo-app#readme",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/kenworw/todo-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenworw/todo-app.git"
+  },
+  "license": "ISC",
+  "author": "kelemu",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.9"
+  }
+}

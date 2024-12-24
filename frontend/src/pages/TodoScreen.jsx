@@ -11,12 +11,12 @@ const TodoScreen = () => {
        <Link to="/" className="btn btn-light my-3">
         Back
       </Link>
-        <>
+        <div className='container'>
           <h1>Todo Detail</h1>
           <div className='row'>
             <TodoItem todo={todo} />
           </div>
-        </>
+        </div>
     </>
   );
 };
