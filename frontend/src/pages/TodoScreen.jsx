@@ -1,10 +1,21 @@
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import TodoItem from '../components/TodoItem';
-import todos from '../todos';
+import axios from 'axios';
 
 const TodoScreen = () => {
+
+    const [todo, setTodos] = useState([]);
     const {id: todoId } = useParams();
-    const todo = todos.find((todo) => todo._id === todoId);
+
+    useEffect(() => {
+      const fetchTodos = async () => {
+        
+        const {data} = await axios.get(`/api/todos/${todoId}`);
+        setTodos(data);
+      };
+      fetchTodos(); 
+    }, [todoId]);
 
   return (
     <>

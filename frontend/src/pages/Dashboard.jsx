@@ -1,7 +1,20 @@
+import { useEffect, useState } from 'react';
 import Todo from '../components/Todo';
-import todos from '../todos';
+import axios from 'axios';
 
 const Dashboard = () => {
+
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const {data} = await axios.get('/api/todos');
+      setTodos(data);
+    };
+    fetchTodos();
+  }, []);
+
+
   return (
     <>
       <h1>List of Todos</h1>
