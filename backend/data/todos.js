@@ -1,53 +1,65 @@
 const todos = [
   {
-    _id: "1",
     title: "todo 1",
     description: "description 1",
+    dueDate: "2021-12-31",
+    status: "incomplete",
   },
   {
-    _id: "2",
     title: "todo 2",
     description: "description 3",
+    dueDate: "2021-12-31",
+    status: "incomplete",
   },
   {
-    _id: "3",
     title: "todo 3",
     description: "description 3",
+    dueDate: "2021-12-31",
+    status: "incomplete",
   },
   {
-    _id: "4",
     title: "todo 4",
     description: "description 4",
+    dueDate: "2021-12-31",
+    status: "incomplete",
   },
   {
-    _id: "5",
     title: "todo 5",
     description: "description 5",
+    dueDate: "2021-12-31",
+    status: "incomplete",
+
   },
   {
-    _id: "6",
     title: "todo 6",
     description: "description 6",
+    dueDate: "2021-12-31",
+    status: "incomplete",
+
   },
   {
-    _id: "7",
     title: "todo 7",
     description: "description 7",
+    dueDate: "2021-12-31",
+    status: "incomplete",
   },
   {
-    _id: "8",
     title: "todo 8",
     description: "description 8",
+    dueDate: "2021-12-31",
+    status: "incomplete",
   },
   {
-    _id: "9",
     title: "todo 9",
     description: "description 9",
+    dueDate: "2021-12-31",
+    status: "incomplete",
   },
   {
-    _id: "10",
     title: "todo 10",
     description: "description 10",
+    dueDate: "2021-12-31",
+    status: "incomplete",
   },
 ];
 
