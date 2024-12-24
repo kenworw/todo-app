@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 import connectDB from './config/db.js';
-import todos from './data/todos.js';
+import todoRoutes from './routes/todoRoutes.js';
 const port = process.env.PORT;
 
 connectDB();
@@ -13,14 +13,7 @@ app.get('/', (req, res) => {
     res.send('Server is ready');
 });
 
-app.get('/api/todos', (req, res) => {
-    res.send(todos);
-});
-
-app.get('/api/todos/:id', (req, res) => {
-    const todo = todos.find((t) => t._id === req.params.id);
-    res.send(todo);
-});
+app.use('/api/todos', todoRoutes);
 
 
 app.listen(port, () => {
