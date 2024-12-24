@@ -15,9 +15,7 @@ const Todo = ({ todo }) => {
         <div className="card-footer" as="h3">
           Will due on: {todo.dueDate}
         </div>
-        <div className="card-footer" as="h3">
-          Created at: {todo.createdAt}
-        </div>
+       
 
        
       </div>

@@ -1,4 +1,3 @@
-// import { Row, Col } from 'react-bootstrap';
 import Todo from '../components/Todo';
 import todos from '../todos';
 

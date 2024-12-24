@@ -10,11 +10,13 @@ import "./css/custom.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Dashboard from "./pages/Dashboard";
+import TodoScreen from "./pages/TodoScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
   <Route path="/" element={<App />}>
     <Route index={true} path="/" element={<Dashboard />} />
+    <Route path="/todo/:id" element={<TodoScreen />} />
   </Route>)
 );
 
