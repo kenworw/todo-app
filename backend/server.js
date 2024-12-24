@@ -1,10 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
+import connectDB from './config/db.js';
 import todos from './data/todos.js';
-
-
 const port = process.env.PORT;
+
+connectDB();
 const app = express();
 
 
