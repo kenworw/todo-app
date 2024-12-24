@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 const Todo = ({ todo }) => {
   return (
     <div className="card">
       <div className="card-body">
-        <a href={`/todo/${todo._id}`}>
+        <Link to={`/todo/${todo._id}`}>
           <div className="card-body" as="div">
             <strong>{todo.title}</strong>
           </div>
-        </a>
+        </Link>
 
         <div className="card-footer" as="h3">
           Status: {todo.status}
