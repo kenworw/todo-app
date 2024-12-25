@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 dotenv.config();
 import connectDB from './config/db.js';
 import todoRoutes from './routes/todoRoutes.js';
@@ -12,6 +13,10 @@ const app = express();
 // Middleware Body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Middleware Cookie parser
+app.use(cookieParser());
+
 
 
 app.get('/', (req, res) => {
