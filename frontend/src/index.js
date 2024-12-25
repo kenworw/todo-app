@@ -13,12 +13,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Dashboard from "./pages/Dashboard";
 import TodoScreen from "./pages/TodoScreen";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
   <Route path="/" element={<App />}>
     <Route index={true} path="/" element={<Dashboard />} />
     <Route path="/todo/:id" element={<TodoScreen />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/register" element={<Register />} />
   </Route>)
 );
 
