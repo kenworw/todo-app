@@ -10,8 +10,8 @@ const todosApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 60,
     }),
     getTodoDetails: builder.query({
-      query: (id) => ({
-        url: `${TODOS_URL}/${id}`,
+      query: (todoid) => ({
+        url: `${TODOS_URL}/${todoid}`,
       }),
       keepUnusedDataFor: 60,
     }),

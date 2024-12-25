@@ -1,4 +1,5 @@
 import Todo from "../components/Todo";
+import Message from "../components/Message";
 import { useGetTodosQuery } from "../features/todos/todosApiSlice";
 
 const Dashboard = () => {
@@ -9,7 +10,7 @@ const Dashboard = () => {
       {isLoading ? (
         <h3>Loading...</h3>
       ) : error ? (
-        <div>{error.data.message || error.error}</div>
+        <Message variant= "danger">{error.data.message || error.error}</Message>
       ) : (
         <>
           <h1>List of Todos</h1>

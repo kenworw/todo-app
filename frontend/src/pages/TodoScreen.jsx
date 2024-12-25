@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import TodoItem from "../components/TodoItem";
+import Message from "../components/Message";
 import { useGetTodoDetailsQuery } from "../features/todos/todosApiSlice";
 
 const TodoScreen = () => {
@@ -16,7 +17,7 @@ const TodoScreen = () => {
       {isLoading ? (
         <h3>Loading...</h3>
       ) : error ? (
-        <div>{error.data.message || error.error}</div>
+        <Message variant="danger">{error.data.message || error.error}</Message>
       ) : (
         <div>
           <div className="container">
