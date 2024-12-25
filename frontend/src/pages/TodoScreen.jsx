@@ -1,33 +1,32 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import TodoItem from '../components/TodoItem';
-import axios from 'axios';
+import { useParams, Link } from "react-router-dom";
+import TodoItem from "../components/TodoItem";
+import { useGetTodoDetailsQuery } from "../features/todos/todosApiSlice";
 
 const TodoScreen = () => {
+  
+  const { id: todoId } = useParams();
+  const { data: todo, isLoading, error } = useGetTodoDetailsQuery(todoId);
 
-    const [todo, setTodos] = useState([]);
-    const {id: todoId } = useParams();
-
-    useEffect(() => {
-      const fetchTodos = async () => {
-        
-        const {data} = await axios.get(`/api/todos/${todoId}`);
-        setTodos(data);
-      };
-      fetchTodos(); 
-    }, [todoId]);
 
   return (
     <>
-       <Link to="/" className="btn btn-light my-3">
+      <Link to="/" className="btn btn-light my-3">
         Back
       </Link>
-        <div className='container'>
-          <h1>Todo Detail</h1>
-          <div className='row'>
-            <TodoItem todo={todo} />
+      {isLoading ? (
+        <h3>Loading...</h3>
+      ) : error ? (
+        <div>{error.data.message || error.error}</div>
+      ) : (
+        <div>
+          <div className="container">
+            <h1>Todo Detail</h1>
+            <div className="row">
+              <TodoItem todo={todo} />
+            </div>
           </div>
         </div>
+      )}
     </>
   );
 };
