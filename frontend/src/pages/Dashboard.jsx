@@ -10,7 +10,7 @@ const Dashboard = () => {
       {isLoading ? (
         <h3>Loading...</h3>
       ) : error ? (
-        <Message variant= "danger">{error.data.message || error.error}</Message>
+        <Message variant="danger">{error.data.message || error.error}</Message>
       ) : (
         <>
           <h1>List of Todos</h1>
@@ -21,7 +21,6 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-          )
         </>
       )}
     </>

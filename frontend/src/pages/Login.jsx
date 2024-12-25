@@ -1,7 +1,11 @@
+import { useState, useEffect } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
+import {useLoginMutation} from '../features/user/userApiSlice';
+import {setCredentials} from '../features/auth/authSlice';
+import {toast} from 'react-toastify';
 
 
 const Login = () => {
@@ -9,9 +13,31 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitHandler = (e) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [login, {isLoading}] = useLoginMutation();
+  const {userInfo}  = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [userInfo, navigate]);
+
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log('Submit');
+
+    try {
+      const res = await login({email, password}).unwrap();
+      dispatch(setCredentials({...res,}));
+      navigate('/');
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+
+    }
+  
   }
 
   return (
@@ -39,7 +65,7 @@ const Login = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button disabled= "" type='submit' variant='primary'>
+        <Button disabled={isLoading}  type='submit' variant='primary' >
           Sign In
         </Button>
 
