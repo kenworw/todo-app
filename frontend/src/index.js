@@ -15,7 +15,8 @@ import Dashboard from "./pages/Dashboard";
 import TodoScreen from "./pages/TodoScreen";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import TodoForm from "./pages/TodoForm";
+import UpdateTodoForm from "./pages/UpdateTodoForm";
+import CreateTodoForm from "./pages/CreateTodoForm";
 import Privateroutes from "./components/PrivateRoutes";
 
 const router = createBrowserRouter(
@@ -23,11 +24,14 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      
 
       <Route path="" element={<Privateroutes />}>
         <Route index={true} path="/" element={<Dashboard />} />
         <Route path="/todo/:id" element={<TodoScreen />} />
-        <Route path="/todo/:id/form" element={<TodoForm />} />
+        <Route path="/todo/:id/update" element={<UpdateTodoForm />} />
+      <Route path="/create" element={<CreateTodoForm />} />
+      
       </Route>
     </Route>
   )

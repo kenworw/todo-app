@@ -1,5 +1,5 @@
-import { TODOS_URL } from "../constants";
-import apiSlice from "../api/apiSlice";
+import { TODOS_URL } from '../constants';
+import apiSlice from '../api/apiSlice';
 
 const todosApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -8,37 +8,36 @@ const todosApiSlice = apiSlice.injectEndpoints({
         url: TODOS_URL,
       }),
       keepUnusedDataFor: 5,
-      providesTags: ["Todos"],
-
-
+      providesTags: ['Todos'],
     }),
     getTodoDetails: builder.query({
       query: (todoId) => ({
         url: `${TODOS_URL}/${todoId}`,
       }),
-      keepUnusedDataFor: 5,
+      providesTags: (result, error, id) => [{ type: 'Todos', id }],
     }),
     createTodo: builder.mutation({
-      query: () => ({
+      query: (newTodo) => ({
         url: TODOS_URL,
-        method: "POST",
+        method: 'POST',
+        body: newTodo,
       }),
-      invalidatesTags: ["Todo"],
+      invalidatesTags: ['Todos'],
     }),
     updateTodo: builder.mutation({
-      query: (data) => ({
-        url: `${TODOS_URL}/${data.todoId}`,
-        method: "PUT",
+      query: ({ id, ...data }) => ({
+        url: `${TODOS_URL}/${id}`,
+        method: 'PUT',
         body: data,
       }),
-      invalidatesTags: ["Todos"],
+      invalidatesTags: (result, error, { id }) => [{ type: 'Todos', id }],
     }),
     deleteTodo: builder.mutation({
-      query: (id) => ({
-        url: `${TODOS_URL}/${id}`,
-        method: "DELETE",
+      query: (todoId) => ({
+        url: `${TODOS_URL}/${todoId}`,
+        method: 'DELETE',
       }),
-      invalidatesTags: ["Todos"],
+      invalidatesTags: ['Todos'],
     }),
   }),
 });
@@ -50,3 +49,5 @@ export const {
   useUpdateTodoMutation,
   useDeleteTodoMutation,
 } = todosApiSlice;
+
+export default todosApiSlice;

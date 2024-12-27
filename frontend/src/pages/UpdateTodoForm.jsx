@@ -9,8 +9,8 @@ import {
   useUpdateTodoMutation,
 } from "../features/todos/todosApiSlice";
 
-const TodoForm = () => {
-  const { id: todoId } = useParams();
+const UpdateTodoForm = () => {
+  const { id } = useParams();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,7 +24,7 @@ const TodoForm = () => {
     isLoading,
     refetch,
     error,
-  } = useGetTodoDetailsQuery(todoId);
+  } = useGetTodoDetailsQuery(id);
 
   const [updateTodo, { isLoading: loadingUpdate }] = useUpdateTodoMutation();
 
@@ -40,10 +40,11 @@ const TodoForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const updatedTodo = {
-      todoId,
+      id,
       title,
       description,
       status,
+      dueDate,
     };
     const result = await updateTodo(updatedTodo);
     if (result.error) {
@@ -102,15 +103,22 @@ const TodoForm = () => {
                 onChange={(e) => setDueDate(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            <Form.Group controlId="status">
-              <Form.Label>Status</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter status"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <div className='form-group'>
+        <label htmlFor='status'>Status</label>
+        <select
+          id='status'
+          className='form-control'
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+          required
+        >
+          <option value=''>Select Status</option>
+          <option value='Not Started'>Not Started</option>
+          <option value='In Progress'>In Progress</option>
+          <option value='Completed'>Completed</option>
+          <option value='Archive'>Due</option>
+        </select>
+      </div>
 
             <Button
               type="submit"
@@ -126,4 +134,4 @@ const TodoForm = () => {
   );
 };
 
-export default TodoForm;
+export default UpdateTodoForm;

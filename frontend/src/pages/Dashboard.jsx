@@ -1,26 +1,12 @@
 import Todo from "../components/Todo";
+import { Link } from "react-router-dom";
 import Message from "../components/Message";
-import { useGetTodosQuery, useCreateTodoMutation } from "../features/todos/todosApiSlice";
-import {toast} from "react-toastify";
+import { useGetTodosQuery } from "../features/todos/todosApiSlice";
 
 const Dashboard = () => {
-  const { data: todos, isLoading, error, refetch } = useGetTodosQuery();
 
-  const [createTodo, {isLoading: loadingCreate}] = useCreateTodoMutation();
-
-
-
-  const crateTodoHandler = async () => {
-    if (window.confirm("Are you sue you want to create a new todo?")) {
-      try {
-        await createTodo();
-        refetch();
-      } catch (error) {
-        toast.error("Failed to create todo", error?.data?.message || error.error);
-      }
-    }
-  };
-
+  const { data: todos, isLoading, error} = useGetTodosQuery();
+  
   return (
     <>
       {isLoading ? (
@@ -33,16 +19,15 @@ const Dashboard = () => {
             <h1>Todos</h1>
             
             
-            <button
-              className="btn-sm m-3"
-              onClick={crateTodoHandler}
-              disabled={loadingCreate}
-            >
-              Create Todo
-            </button>
+            
+
+            <Link to={`/create`} className="btn btn-warning">
+                Create task
+              </Link>
+
           </div>
           {todos.length === 0 ? (
-              <Message variant="info">You don't set any todo yet!</Message>
+              <Message variant="info">You don't set any todo yet</Message>
             ) : null}
           <div className="row">
             {todos.map((todo) => (

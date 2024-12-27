@@ -14,7 +14,7 @@ const TodoScreen = () => {
   const navigate = useNavigate();
 
   
-  const detateTodoHandler = async () => {
+  const deleteTodoHandler = async () => {
     if (window.confirm("Are you sure you want to delete this todo?")) {
       try {
         await deleteTodo(todo._id);
@@ -54,12 +54,12 @@ const TodoScreen = () => {
           Actions:
           
       <div className="col">
-              <Link to={`/todo/${todo._id}/form`} className="btn btn-warning">
+              <Link to={`/todo/${todo._id}/update`} className="btn btn-warning">
                 Update
               </Link>
               <button
                 className="btn btn-danger"
-                onClick={detateTodoHandler}
+                onClick={deleteTodoHandler}
               >
                 Delete
               </button>
