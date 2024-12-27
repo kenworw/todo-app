@@ -7,12 +7,16 @@ function TodoItem({ todo }) {
       <div className=" card-footer">
         Created on: {new Date(todo.createdAt).toLocaleDateString()}
       </div>
+      
       <div className="card-footer" as="h3">
           Status: {todo.status}
         </div>
         <div className="card-footer" as="h3">
-          Will due on: {todo.dueDate}
+          Will due on: {new Date(todo.createdAt).toLocaleDateString()}
         </div>
+        <div className=" card-footer">
+        Last updated on: {new Date(todo.updatedAt).toLocaleDateString()}
+      </div>
     </div>
   );
 }

@@ -31,6 +31,8 @@ const Dashboard = () => {
         <>
           <div className="d-flex justify-content-between align-items-center">
             <h1>Todos</h1>
+            
+            
             <button
               className="btn-sm m-3"
               onClick={crateTodoHandler}
@@ -39,6 +41,9 @@ const Dashboard = () => {
               Create Todo
             </button>
           </div>
+          {todos.length === 0 ? (
+              <Message variant="info">You don't set any todo yet!</Message>
+            ) : null}
           <div className="row">
             {todos.map((todo) => (
               <div className="col-md-4" key={todo._id}>

@@ -29,7 +29,7 @@ const TodoForm = () => {
   const [updateTodo, { isLoading: loadingUpdate }] = useUpdateTodoMutation();
 
   useEffect(() => {
-    if(todo){
+    if (todo) {
       setTitle(todo.title);
       setDescription(todo.description);
       setStatus(todo.status);
@@ -82,21 +82,23 @@ const TodoForm = () => {
 
             <Form.Group controlId="description">
               <Form.Label>Description</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              ></Form.Control>
+              <>
+                <textarea
+                  class="form-control"
+                  type="text"
+                  placeholder="Enter description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></textarea>
+              </>
             </Form.Group>
-
 
             <Form.Group controlId="dueDate">
               <Form.Label>Due Date</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="Enter due date"
-                value= {dueDate}
+                value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
               ></Form.Control>
             </Form.Group>
@@ -105,7 +107,7 @@ const TodoForm = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter status"
-                value= {status}
+                value={status}
                 onChange={(e) => setStatus(e.target.value)}
               ></Form.Control>
             </Form.Group>
