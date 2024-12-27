@@ -1,9 +1,25 @@
 import Todo from "../components/Todo";
 import Message from "../components/Message";
-import { useGetTodosQuery } from "../features/todos/todosApiSlice";
+import { useGetTodosQuery, useCreateTodoMutation } from "../features/todos/todosApiSlice";
+import {toast} from "react-toastify";
 
 const Dashboard = () => {
-  const { data: todos, isLoading, error } = useGetTodosQuery();
+  const { data: todos, isLoading, error, refetch } = useGetTodosQuery();
+
+  const [createTodo, {isLoading: loadingCreate}] = useCreateTodoMutation();
+
+
+
+  const crateTodoHandler = async () => {
+    if (window.confirm("Are you sue you want to create a new todo?")) {
+      try {
+        await createTodo();
+        refetch();
+      } catch (error) {
+        toast.error("Failed to create todo", error?.data?.message || error.error);
+      }
+    }
+  };
 
   return (
     <>
@@ -13,7 +29,16 @@ const Dashboard = () => {
         <Message variant="danger">{error.data.message || error.error}</Message>
       ) : (
         <>
-          <h1>List of Todos</h1>
+          <div className="d-flex justify-content-between align-items-center">
+            <h1>Todos</h1>
+            <button
+              className="btn-sm m-3"
+              onClick={crateTodoHandler}
+              disabled={loadingCreate}
+            >
+              Create Todo
+            </button>
+          </div>
           <div className="row">
             {todos.map((todo) => (
               <div className="col-md-4" key={todo._id}>

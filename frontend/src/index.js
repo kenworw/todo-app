@@ -15,6 +15,7 @@ import Dashboard from "./pages/Dashboard";
 import TodoScreen from "./pages/TodoScreen";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import TodoForm from "./pages/TodoForm";
 
 
 const router = createBrowserRouter(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
     <Route path="/todo/:id" element={<TodoScreen />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
+    <Route path="/todo/:id/form" element={<TodoForm />} />
   </Route>)
 );
 
