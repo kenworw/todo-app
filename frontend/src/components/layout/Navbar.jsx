@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {useSelector, useDispatch} from 'react-redux';
 import {useLogoutMutation} from '../../features/user/userApiSlice';
 import {logout} from '../../features/auth/authSlice';
+import logo from '../../assets/brand.png';
 
 const Navbar = () => {
 
@@ -25,8 +26,11 @@ const Navbar = () => {
 
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <h1 className="navbar-brand">Todo App</h1>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3 ">
+      <Link to="/" className="navbar-brand d-flex align-items-center ms-4">
+        <img src={logo} alt="Todo App Logo" className="d-inline-block align-top" style={{ height: '40px', marginRight: '10px' }} />
+        Todo App
+      </Link>
       <div className="collapse navbar-collapse">
         {userInfo ? ( 
           <ul className="navbar-nav ms-auto">
@@ -37,7 +41,7 @@ const Navbar = () => {
             {userInfo.name}
           </li>
           <li className="nav-item">
-            <Link to="/login" className="nav-link" onClick={logoutHandler}> logout</Link>
+            <Link to="/login" className="nav-link mx-2" onClick={logoutHandler}> logout</Link>
           </li>
         </ul>
         ) : (
@@ -46,7 +50,7 @@ const Navbar = () => {
             <Link to="/register" className="nav-link" > Register</Link>
           </li>
           <li className="nav-item">
-            <Link to="/login" className="nav-link" > Login</Link>
+            <Link to="/login" className="nav-link mx-2" > Login</Link>
           </li>
         </ul>
         )}

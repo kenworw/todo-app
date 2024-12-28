@@ -15,78 +15,81 @@ const CreateTodoForm = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const newTodo = {
-      title,
-      description,
-      status,
-      dueDate,
-    };
     try {
-      await createTodo(newTodo).unwrap();
+      await createTodo({
+        title,
+        description,
+        status,
+        dueDate,
+      }).unwrap();
       toast.success("Todo created successfully");
       setTitle("");
       setDescription("");
       setStatus("");
       setDueDate("");
-      navigate("/");
+      navigate("/todolist");
     } catch (err) {
       toast.error("Failed to create todo");
     }
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className="form-group">
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          className="form-control"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          className="form-control"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        ></textarea>
-      </div>
-      <div className="form-group">
-        <label htmlFor="status">Status</label>
-        <select
-          id="status"
-          className="form-control"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-          required
-        >
-          <option value="">Select Status</option>
-          <option value="Not Started">Not Started</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-        </select>
-      </div>
-      <div className="form-group">
-        <label htmlFor="dueDate">Due Date</label>
-        <input
-          type="date"
-          id="dueDate"
-          className="form-control"
-          value={dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit" className="btn btn-primary" disabled={isCreating}>
-        {isCreating ? "Creating..." : "Create Todo"}
-      </button>
-    </form>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Create New Todo</h2>
+      <form onSubmit={submitHandler} className="p-4 border rounded shadow-sm bg-light">
+        <div className="form-group mb-3">
+          <label htmlFor="title" className="form-label">Title</label>
+          <input
+            type="text"
+            id="title"
+            className="form-control"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <label htmlFor="description" className="form-label">Description</label>
+          <textarea
+            id="description"
+            className="form-control"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        <div className="form-group mb-3">
+          <label htmlFor="status" className="form-label">Status</label>
+          <select
+            id="status"
+            className="form-control"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            required
+          >
+            <option value="">Select Status</option>
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Due">Due</option>
+          </select>
+        </div>
+        <div className="form-group mb-3">
+          <label htmlFor="dueDate" className="form-label">Due Date</label>
+          <input
+            type="date"
+            id="dueDate"
+            className="form-control"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary w-100" disabled={isCreating}>
+          {isCreating ? "Creating..." : "Create Todo"}
+        </button>
+      </form>
+    </div>
   );
 };
 

@@ -50,7 +50,7 @@ const Register = () => {
 
   return (
     <FormContainer>
-      <h1>Registration</h1>
+      <h1>Sign Up</h1>
 
       <Form onSubmit={submitHandler}>
         <Form.Group className="my-2" controlId="name">

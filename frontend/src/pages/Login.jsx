@@ -74,7 +74,7 @@ const Login = () => {
       <Row className='py-3'>
         <Col>
         Not registered yet?
-           <Link to={'/register'}> Register
+           <Link to={'/register'}> Sign Up
            </Link>
         </Col>
       </Row>

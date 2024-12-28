@@ -8,7 +8,7 @@ const Dashboard = () => {
   const { data: todos, isLoading, error} = useGetTodosQuery();
   
   return (
-    <>
+    <div className="container">
       {isLoading ? (
         <h3>Loading...</h3>
       ) : error ? (
@@ -21,7 +21,7 @@ const Dashboard = () => {
             
             
 
-            <Link to={`/create`} className="btn btn-warning">
+            <Link to={`/create`} className="btn btn-secondary">
                 Create task
               </Link>
 
@@ -38,7 +38,7 @@ const Dashboard = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

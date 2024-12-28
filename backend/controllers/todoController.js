@@ -1,13 +1,18 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Todo from '../models/todoModel.js';
 
-// Get all todos for the authenticated user
+
+// @desc    Get all todos for the authenticated user
+// @route   GET /api/todos
+// @access  Private
 const getTodos = asyncHandler(async (req, res) => {
   const todos = await Todo.find({ user: req.user_id });
   res.json(todos);
 });
 
-// Get a single todo by ID for the authenticated user
+// @deskGet a single todo by ID for the authenticated user
+// @route   GET /api/todos/:id
+// @access  Private
 const getTodoById = asyncHandler(async (req, res) => {
   const todo = await Todo.findOne({ _id: req.params.id, user: req.user_id });
 
@@ -18,7 +23,9 @@ const getTodoById = asyncHandler(async (req, res) => {
   }
 });
 
-// Create a new todo for the authenticated user
+// @desc    Create a new todo for the authenticated user
+// @route   POST /api/todos
+// @access  Private
 const createTodo = asyncHandler(async (req, res) => {
   const { title, description, status, dueDate } = req.body;
 
@@ -42,7 +49,10 @@ const createTodo = asyncHandler(async (req, res) => {
   }
 });
 
-// Update a todo for the authenticated user
+
+// @desc    Update a todo for the authenticated user
+// @route   PUT /api/todos/:id
+// @access  Private
 const updateTodo = asyncHandler(async (req, res) => {
   const { title, description, status, dueDate } = req.body;
   const todo = await Todo.findOne({ _id: req.params.id, user: req.user_id });
@@ -60,7 +70,9 @@ const updateTodo = asyncHandler(async (req, res) => {
   }
 });
 
-// Delete a todo for the authenticated user
+// @desc    Delete a todo for the authenticated user
+// @route   DELETE /api/todos/:id
+// @access  Private
 const deleteTodo = asyncHandler(async (req, res) => {
   const todo = await Todo.findOne({ _id: req.params.id, user: req.user_id });
 
