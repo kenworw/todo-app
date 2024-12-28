@@ -27,7 +27,7 @@ const CreateTodoForm = () => {
       setDescription("");
       setStatus("");
       setDueDate("");
-      navigate("/todolist");
+      navigate("/");
     } catch (err) {
       toast.error("Failed to create todo");
     }

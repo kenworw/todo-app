@@ -1,4 +1,21 @@
 function TodoItem({ todo }) {
+
+  const getStatusBackgroundColor = (status) => {
+    switch (status) {
+      case 'Not Started':
+        return 'lightgray';
+      case 'In Progress':
+        return 'lightblue';
+      case 'Completed':
+        return 'lightgreen';
+      case 'Archive':
+        return 'lightcoral';
+      default:
+        return 'white';
+    }
+  };
+
+
   return (
     <div className="card">
       <h2 className="card-header">{todo.title}</h2>
@@ -8,7 +25,7 @@ function TodoItem({ todo }) {
         Created on: {new Date(todo.createdAt).toLocaleDateString()}
       </div>
       
-      <div className="card-footer" as="h3">
+      <div className="card-footer" as="h3" style={{ backgroundColor: getStatusBackgroundColor(todo.status) }}>
           Status: {todo.status}
         </div>
         <div className="card-footer" as="h3">

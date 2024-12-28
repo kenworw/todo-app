@@ -31,7 +31,7 @@ const Dashboard = () => {
             ) : null}
           <div className="row">
             {todos.map((todo) => (
-              <div className="col-md-4" key={todo._id}>
+              <div className="col-md-4 mb-4" key={todo._id}>
                 <Todo todo={todo} />
               </div>
             ))}

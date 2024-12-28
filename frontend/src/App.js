@@ -9,7 +9,7 @@ function App() {
     <div
       className="d-flex flex-column min-vh-100"
       style={{
-        background: 'linear-gradient(135deg,rgb(94, 94, 9),rgb(49, 49, 44))', // Example gradient
+        background: 'linear-gradient(135deg,rgb(94, 90, 9),rgb(49, 49, 44))', // Example gradient
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
       }}
