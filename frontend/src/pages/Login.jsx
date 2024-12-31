@@ -26,19 +26,21 @@ const Login = () => {
   }, [userInfo, navigate]);
 
 
+  
   const submitHandler = async (e) => {
     e.preventDefault();
-
     try {
-      const res = await login({email, password}).unwrap();
-      dispatch(setCredentials({...res,}));
-      navigate('/');
-    } catch (error) {
-      toast.error(error?.data?.message || error.error);
-
+      const userData = await login({ email, password }).unwrap();
+      dispatch(setCredentials(userData));
+      navigate('/dashboard');
+    } catch (err) {
+      if (err.status === 401) {
+        toast.error('You have not registered yet');
+      }  else {
+        toast.error('Login failed. Please try again.');
+      }
     }
-  
-  }
+  };
 
   return (
     <FormContainer>
