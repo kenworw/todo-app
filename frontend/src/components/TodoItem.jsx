@@ -3,13 +3,13 @@ function TodoItem({ todo }) {
   const getStatusBackgroundColor = (status) => {
     switch (status) {
       case 'Not Started':
-        return 'lightgray';
+        return 'gray';
       case 'In Progress':
-        return 'lightblue';
+        return 'blue';
       case 'Completed':
-        return 'lightgreen';
+        return 'green';
       case 'Archive':
-        return 'lightcoral';
+        return 'coral';
       default:
         return 'white';
     }
