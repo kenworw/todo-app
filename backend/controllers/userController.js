@@ -20,8 +20,14 @@ const authUser = asyncHandler(async(req, res) => {
       name: user.name,
       email: user.email,
     });
+  } else if (!user) {
+    if(!user) {
+      res.status(400).json({message: "You are not registered. Please register first"});
+  }
   } else {
     res.status(401).json({ message: "Invalid email or password"});
+
+
   }
 });
 

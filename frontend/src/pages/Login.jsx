@@ -32,12 +32,14 @@ const Login = () => {
     try {
       const userData = await login({ email, password }).unwrap();
       dispatch(setCredentials(userData));
-      navigate('/dashboard');
+      navigate('/');
     } catch (err) {
-      if (err.status === 401) {
-        toast.error('You have not registered yet');
-      }  else {
-        toast.error('Login failed. Please try again.');
+      alert(err.status);
+      if (err.status) {
+        toast.error(err.data.message);
+      }
+      else {
+        toast.error(' Something went wrong');
       }
     }
   };
