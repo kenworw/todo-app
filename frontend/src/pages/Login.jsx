@@ -34,7 +34,6 @@ const Login = () => {
       dispatch(setCredentials(userData));
       navigate('/');
     } catch (err) {
-      alert(err.status);
       if (err.status) {
         toast.error(err.data.message);
       }
