@@ -11,17 +11,19 @@ function App() {
     <div
       className="d-flex flex-column min-vh-100"
       style={{
-        background: 'linear-gradient(135deg,rgb(94, 90, 9),rgb(49, 49, 44))', // Example gradient
+        background: 'linear-gradient(135deg, #1f2937 0%, #111827 100%)',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
       }}
     >
       <Navbar />
-      <div className="container flex-grow-1 my-4">
-        <Outlet />
+      <div className="container flex-grow-1 py-4">
+        <div className="bg-white rounded-4 shadow-lg p-4 p-md-5">
+          <Outlet />
+        </div>
       </div>
       <Footer />
-      <ToastContainer />
+      <ToastContainer position="top-right" autoClose={2500} />
     </div>
   );
 }
